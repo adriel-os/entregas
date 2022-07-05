@@ -1,0 +1,73 @@
+div{
+    box-sizing: border-box;
+}
+
+.mainBody{
+    margin-top: 80px;
+}
+
+.mainContainer{
+    padding: 30px;
+    margin-top: 50px;
+    border:1px solid red;
+}
+
+.formLogin
+{
+   /* background-color: #015bea; */
+   background-color: #f4f4f4; 
+   padding: 30px;
+}
+
+.inputText{
+    border-radius: 30px;
+    margin: 30px;
+    padding: 5px;
+    height: 40px;
+    background-color: #c4c4c4; 
+    border:1px solid red;
+}
+
+.inputText input{
+    height: 30px;
+    border: 0px;
+}
+
+.bot
+{
+   border-radius: 30px;
+   padding: 10px;
+   font-size: 18px;
+    font-weight: 600;
+}
+
+.btnCadastrar
+{
+    /* background: rgb(253,196,2); */
+    /* background: linear-gradient(90deg, rgba(253,196,2,1) 0%, rgba(255,151,0,1) 100%); */
+    color:#5139b9;
+}
+
+.btnLogin
+{
+    border:1px solid #ffffff;
+}
+
+
+.formLogin h1
+{
+    margin-bottom: 20px;
+}
+.cardLogin{
+    
+}
+
+.border
+{
+    border: 1px solid red; 
+}
+
+.rowBtn
+{    
+    height: 50px;
+}
