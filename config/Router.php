@@ -2,7 +2,7 @@
 // Leia-me: 
 // para usar este roteador é necessário 
 // aplicar o .htaccess redirecionando as requisições para /index.php 
-
+// 
 class Router
 {
 
@@ -21,6 +21,7 @@ class Router
         $this->query    = $request['QUERY_STRING'];
         $this->self     = $request['PHP_SELF'];
         $this->root     = $request['DOCUMENT_ROOT'];
+        $this->localAbsoluto = '';
         
         if(!isset($request['CONTENT_TYPE']))
         $this->contentType = 'text/html';
@@ -76,8 +77,11 @@ class Router
        // echo $result;
 
         $result = $result .'.php';
-
-        if(!file_exists($this->root.'/'. $result))
+        
+        $this->localAbsoluto = $this->root.'/../entregas/controller/GET/html/index.php';
+        // var_dump( file_exists($arquivo));
+        // echo $arquivo ;
+        if(!file_exists($this->localAbsoluto))
         {
             echo '<span style="font-size:18px;border:1px solid orange; margin:15px; padding:6px;">Controller não encontrado:'.$result.'</span>';
             return false;
@@ -116,9 +120,9 @@ class Router
     function require_controller()
     {
         ${$this->method} = $this->variables;
-        // echo $this->controller;
+        //echo $this->controller;
         $rotas = $this;
-        require_once($this->controller);
+        require_once($this->localAbsoluto );
     }
 
 function __destruct() {}

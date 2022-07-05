@@ -12,7 +12,15 @@ function classLoader($class_name)
     else
         $class_name = $class_name.'.php';
 	
-    require_once $class_name;
+    try
+    {
+       if(!include_once $class_name)
+       throw new Exception (' Não foi possível incluir o arquivo:'. $class_name);
+    }
+    catch (Exception $e) {
+        echo 'Exceção: ',  $e->getMessage(), "\n";
+    }
+
 }
 
 spl_autoload_register('classLoader');
