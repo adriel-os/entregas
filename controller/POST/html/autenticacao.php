@@ -1,5 +1,6 @@
 <?php
 $auth = Auth::getInstance();
+
 //var_dump($_SERVER);
     if(isset($_POST['login']) and isset($_POST['password']))
     {

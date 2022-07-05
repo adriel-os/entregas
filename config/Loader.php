@@ -14,7 +14,7 @@ function classLoader($class_name)
 	
     try
     {
-       if(!include_once $class_name)
+       if(!@require_once $class_name)
        throw new Exception (' Não foi possível incluir o arquivo:'. $class_name);
     }
     catch (Exception $e) {
