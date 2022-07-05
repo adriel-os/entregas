@@ -1,6 +1,6 @@
 <?php
 $auth = Auth::getInstance();
-
+echo 'okok';
 //var_dump($_SERVER);
     if(isset($_POST['login']) and isset($_POST['password']))
     {
@@ -21,6 +21,7 @@ $auth = Auth::getInstance();
         }
         else
         {
+            echo 'owdk';
             $view = new view_default_index();
             $view->set_msg('Usuário ou senha invalidos!');
             $view->render();
@@ -29,6 +30,8 @@ $auth = Auth::getInstance();
     }
     else
     {
+
+            echo 'owdwedokwokk';
             $view = new view_default_index();
             $view->set_msg('Informe os dados de login');
             $view->render();

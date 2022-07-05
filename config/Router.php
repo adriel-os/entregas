@@ -22,7 +22,7 @@ class Router
         $this->self     = $request['PHP_SELF'];
         $this->root     = $request['DOCUMENT_ROOT'];
         $this->localAbsoluto = '';
-        
+
         if(!isset($request['CONTENT_TYPE']))
         $this->contentType = 'text/html';
         else
@@ -79,8 +79,8 @@ class Router
         $result = $result .'.php';
         
         $this->localAbsoluto = $this->root.'/../entregas/controller/GET/html/index.php';
-        // var_dump( file_exists($arquivo));
-        // echo $arquivo ;
+        var_dump( file_exists($this->localAbsoluto ));
+        echo $this->localAbsoluto  ;
         if(!file_exists($this->localAbsoluto))
         {
             echo '<span style="font-size:18px;border:1px solid orange; margin:15px; padding:6px;">Controller não encontrado:'.$result.'</span>';
