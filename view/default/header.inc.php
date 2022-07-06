@@ -1,4 +1,4 @@
-<meta charset="<?=$charset?>">
+<meta charset="<?=$this->charset;?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?=$title?></title>
 

@@ -1,3 +1,4 @@
+
 <div class="mainContainer container row">
     <div class="artLogin w-50 border"> art</div>
 
@@ -8,13 +9,13 @@
               <span class="input-group-text" id="basic-addon1">
                 <i class="bi bi-incognito col-2"></i>
               </span>
-              <input type="text" class="form-control" placeholder="Digite" aria-label="Input group example" aria-describedby="basic-addon1">
+              <input name="login" type="text" class="form-control" placeholder="Digite seu login" aria-label="Input group example" aria-describedby="basic-addon1">
             </div>
             <div class="input-group w-50 p-1">
               <span class="input-group-text" id="basic-addon1">
                 <i class="bi bi-key col-2"></i>
               </span>
-              <input type="password" name="password" class="form-control" placeholder="Digite" aria-label="Input group example" aria-describedby="basic-addon1">
+              <input type="password" name="password" class="form-control" placeholder="Digite sua senha" aria-label="Input group example" aria-describedby="basic-addon1">
             </div>
 
             <div class="row rowBtn justify-content-center align-items-center border">

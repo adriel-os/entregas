@@ -58,6 +58,32 @@ class Router
     {
         $result = strtolower(strstr($this->uri, '/'));
 
+        if(strpos($result, '/css') > 0 or strpos($result, '/js') > 0 ) // se for arquivo css estático
+        {
+           // se for css, js ou imagem deve assumir comportamento abaixo
+           // no momento está public, mas pode ser adicionado uma nova camada impedindo
+           // users nao logados.
+
+           
+            $this->localAbsoluto = __DIR__ . '/..'. $result ;
+
+            if(strpos($result, '/css') > 0)
+                header("Content-type: text/css", true);
+            if(strpos($result, '/js') > 0)
+                header("Content-type: application/x-javascript", true);  
+
+            include_once $this->localAbsoluto;
+            return true;
+        }
+
+        // se for imagem/ todo? aplicar comportamento header
+        if(strpos($result, '/img') > 0)
+        {
+            header("Content-Type: image/jpeg");
+            readfile($this->localAbsoluto);
+            return true;
+        }  
+
         if(strpos($result, '?') > 0)
         {
             $result = strstr($result, '?', true);
@@ -77,13 +103,16 @@ class Router
        // echo $result;
 
         $result = $result .'.php';
-        
-        $this->localAbsoluto = $this->root.'/../entregas/controller/GET/html/index.php';
-        var_dump( file_exists($this->localAbsoluto ));
-        echo $this->localAbsoluto  ;
+        // echo __DIR__;
+        $this->localAbsoluto = __DIR__ . '/../'. $result ;
+
+        // var_dump( file_exists($this->localAbsoluto ));
+        // echo $this->localAbsoluto ;
+
+
         if(!file_exists($this->localAbsoluto))
         {
-            echo '<span style="font-size:18px;border:1px solid orange; margin:15px; padding:6px;">Controller não encontrado:'.$result.'</span>';
+            echo '<span style="font-size:18px; margin:15px; padding:6px;">Controller não encontrado:'.$result.'</span>';
             return false;
         }
 

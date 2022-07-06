@@ -5,16 +5,17 @@ class view_default_index
   public $msg;
   function __construct()
   {
+    $this->title = 'Área Login';
+    $this->charset = 'utf-8';
+    $this->locale = 'pt-br';
   }
 
   function render()
   {
-    $title = 'Área Login';
-    $charset = 'utf-8';
   ?>
 
   <!doctype html>
-  <html lang=“pt-br”>    
+  <html lang=“<?=$this->locale?>”>    
     <?php require 'header.inc.php' ?>
     <?php require 'body.inc.php' ?>
   </html>
