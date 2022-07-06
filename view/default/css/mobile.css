@@ -1,17 +1,35 @@
-.textoPrincipal h1, .textoPrincipal div {
-  text-align: center;
+body {
+  background-color: #f4f4f4;
+  padding: 0px;
 }
 
-.main .bannerMini {
+.main {
+  width: 98%;
+  margin-left: 1%;
+}
+.main .arte {
   display: none;
 }
-.main actions {
+.main .banner {
+  display: inherit;
+  margin-top: 15px;
+}
+.main .mainRight .textoPrincipal {
+  width: 100%;
+}
+.main .mainRight .textoPrincipal h1 {
+  font-weight: 800;
+}
+.main .mainRight .bannerMini {
+  display: none;
+}
+.main .mainRight actions {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.main actions .linha {
+.main .mainRight actions .linha {
   margin-bottom: 10px;
   width: 100% !important;
   display: flex;
@@ -19,21 +37,14 @@
   align-items: center;
   flex-basis: 1;
 }
-.main actions .linha .description {
+.main .mainRight actions .linha .description {
   width: 100% !important;
 }
 
-.arte {
-  display: none;
-}
-
-.banner {
+.mobile {
   display: inherit;
 }
 
-.footer .mobile {
-  display: inherit;
-}
-.footer .desktop, .footer .tablet {
+.desktop, .tablet {
   display: none;
 }/*# sourceMappingURL=mobile.css.map */

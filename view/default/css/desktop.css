@@ -1,43 +1,20 @@
-.textoPrincipal h1, .textoPrincipal div {
-  text-align: left;
-}
-
-.main {
-  width: 100%;
-  margin: 0%;
-}
-.main .bannerMini {
+.main .arte {
   display: inherit;
 }
-.main actions {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.main actions .linha {
-  margin-bottom: 10px;
-  width: 80% !important;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-basis: 1;
-}
-.main actions .linha .description {
-  width: 70% !important;
-}
-
-.arte {
-  display: inherit;
-}
-
-.banner {
+.main .banner {
   display: none;
 }
-
-.footer .desktop {
+.main .mainRight .textoPrincipal h1, .main .mainRight .textoPrincipal h3 {
+  text-align: center;
+}
+.main .mainRight .bannerMini {
   display: inherit;
 }
-.footer .mobile, .footer .tablet {
+
+.desktop {
+  display: inherit;
+}
+
+.mobile, .tablet {
   display: none;
 }/*# sourceMappingURL=desktop.css.map */

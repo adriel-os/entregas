@@ -1,17 +1,32 @@
-.textoPrincipal h1, .textoPrincipal div {
-  text-align: center;
-}
-
-.main .bannerMini {
+.main .arte {
   display: none;
 }
-.main actions {
+.main .banner {
+  display: inherit;
+}
+.main .banner img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left center;
+     object-position: left center;
+  width: 100%;
+}
+.main .mainRight .textoPrincipal {
+  width: 100%;
+}
+.main .mainRight .textoPrincipal h1, .main .mainRight .textoPrincipal h3 {
+  text-align: center;
+}
+.main .mainRight .bannerMini {
+  display: none;
+}
+.main .mainRight actions {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.main actions .linha {
+.main .mainRight actions .linha {
   margin-bottom: 10px;
   width: 60% !important;
   display: flex;
@@ -20,17 +35,10 @@
   flex-basis: 1;
 }
 
-.arte {
-  display: none;
-}
-
-.banner {
+.tablet {
   display: inherit;
 }
 
-.footer .tablet {
-  display: inherit;
-}
-.footer .desktop, .footer .mobile {
+.desktop, .mobile {
   display: none;
 }/*# sourceMappingURL=tablet.css.map */

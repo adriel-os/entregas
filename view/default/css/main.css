@@ -1,6 +1,9 @@
 html, body {
   height: 100%;
   padding: 0px;
+}
+
+body {
   color: #005DFF;
   background-color: beige;
 }
@@ -24,44 +27,13 @@ button {
   width: 80%;
   margin-left: 10%;
   margin-top: 30px;
+  padding-bottom: 5%;
 }
-.main .bannerMini {
-  display: inherit;
-}
-.main .bannerMini img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left center;
-     object-position: left center;
-  width: 100%;
-  max-height: 100px;
-  margin-bottom: 1rem;
-  border-radius: 20px;
-}
-.main actions {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.main actions .linha {
-  margin-bottom: 10px;
-  width: 100% !important;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-basis: 1;
-}
-.main actions .linha .description {
-  width: 80% !important;
-}
-
-.arte {
-  display: inherit;
-  max-height: 640px;
+.main .arte {
+  max-height: 650px;
   overflow: hidden;
 }
-.arte img {
+.main .arte img {
   -o-object-fit: contain;
      object-fit: contain;
   -o-object-position: top;
@@ -70,12 +42,52 @@ button {
   max-height: 100%;
   margin: 1rem;
 }
-
-.banner {
+.main .mainRight form {
+  width: 100%;
+}
+.main .mainRight .textoPrincipal {
+  margin-top: 10%;
+  width: 80%;
+}
+.main .mainRight .textoPrincipal h1 {
+  font-weight: 600;
+}
+.main .mainRight actions {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .mainRight actions .linha {
+  margin-bottom: 10px;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 1;
+}
+.main .mainRight actions .linha .description {
+  width: 100% !important;
+}
+.main .bannerMini {
+  display: inherit;
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+}
+.main .bannerMini img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: left center;
+     object-position: left center;
+  width: 80%;
+  max-height: 200px;
+}
+.main .banner {
   display: none;
   height: 150px;
 }
-.banner img {
+.main .banner img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: left center;
@@ -85,22 +97,44 @@ button {
   margin-bottom: 1rem;
 }
 
+.footer {
+  margin-top: 20px;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
-  .textoPrincipal h1, .textoPrincipal div {
-    text-align: center;
+  body {
+    background-color: #f4f4f4;
+    padding: 0px;
   }
 
-  .main .bannerMini {
+  .main {
+    width: 98%;
+    margin-left: 1%;
+  }
+  .main .arte {
     display: none;
   }
-  .main actions {
+  .main .banner {
+    display: inherit;
+    margin-top: 15px;
+  }
+  .main .mainRight .textoPrincipal {
+    width: 100%;
+  }
+  .main .mainRight .textoPrincipal h1 {
+    font-weight: 800;
+  }
+  .main .mainRight .bannerMini {
+    display: none;
+  }
+  .main .mainRight actions {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .main actions .linha {
+  .main .mainRight actions .linha {
     margin-bottom: 10px;
     width: 100% !important;
     display: flex;
@@ -108,41 +142,49 @@ button {
     align-items: center;
     flex-basis: 1;
   }
-  .main actions .linha .description {
+  .main .mainRight actions .linha .description {
     width: 100% !important;
   }
 
-  .arte {
-    display: none;
-  }
-
-  .banner {
+  .mobile {
     display: inherit;
   }
 
-  .footer .mobile {
-    display: inherit;
-  }
-  .footer .desktop, .footer .tablet {
+  .desktop, .tablet {
     display: none;
   }
 }
 /*tablet */
 @media (min-width: 769px) {
-  .textoPrincipal h1, .textoPrincipal div {
-    text-align: center;
-  }
-
-  .main .bannerMini {
+  .main .arte {
     display: none;
   }
-  .main actions {
+  .main .banner {
+    display: inherit;
+  }
+  .main .banner img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: left center;
+       object-position: left center;
+    width: 100%;
+  }
+  .main .mainRight .textoPrincipal {
+    width: 100%;
+  }
+  .main .mainRight .textoPrincipal h1, .main .mainRight .textoPrincipal h3 {
+    text-align: center;
+  }
+  .main .mainRight .bannerMini {
+    display: none;
+  }
+  .main .mainRight actions {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .main actions .linha {
+  .main .mainRight actions .linha {
     margin-bottom: 10px;
     width: 60% !important;
     display: flex;
@@ -151,64 +193,34 @@ button {
     flex-basis: 1;
   }
 
-  .arte {
-    display: none;
-  }
-
-  .banner {
+  .tablet {
     display: inherit;
   }
 
-  .footer .tablet {
-    display: inherit;
-  }
-  .footer .desktop, .footer .mobile {
+  .desktop, .mobile {
     display: none;
   }
 }
 /* Desktops */
 @media (min-width: 1200px) {
-  .textoPrincipal h1, .textoPrincipal div {
-    text-align: left;
-  }
-
-  .main {
-    width: 100%;
-    margin: 0%;
-  }
-  .main .bannerMini {
+  .main .arte {
     display: inherit;
   }
-  .main actions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .main actions .linha {
-    margin-bottom: 10px;
-    width: 80% !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-basis: 1;
-  }
-  .main actions .linha .description {
-    width: 70% !important;
-  }
-
-  .arte {
-    display: inherit;
-  }
-
-  .banner {
+  .main .banner {
     display: none;
   }
-
-  .footer .desktop {
+  .main .mainRight .textoPrincipal h1, .main .mainRight .textoPrincipal h3 {
+    text-align: center;
+  }
+  .main .mainRight .bannerMini {
     display: inherit;
   }
-  .footer .mobile, .footer .tablet {
+
+  .desktop {
+    display: inherit;
+  }
+
+  .mobile, .tablet {
     display: none;
   }
 }/*# sourceMappingURL=main.css.map */
