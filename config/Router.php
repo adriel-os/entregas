@@ -82,7 +82,7 @@ class Router
             $this->localAbsoluto = __DIR__ . '/..'. $result ;
             $img = imagecreatefromjpeg( $this->localAbsoluto);
             header('Content-type: image/jpg');  
-            imagejpeg($img, null, 5);
+            imagejpeg($img, null, 10);
             imagedestroy($img);
             return true;
         }  

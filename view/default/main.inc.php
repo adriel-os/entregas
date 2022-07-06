@@ -1,5 +1,5 @@
 <body>
-<div class="main row align-items-center border">
+<div class="main row align-items-start">
     
     <?php 
             include_once 'arte.inc.php';

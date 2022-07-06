@@ -1,4 +1,4 @@
-<div class="mainRight col-sm align-items-start">
+<div class="mainRight col">
       <?php
           include_once 'main.right.form.texto.inc.php';
           include_once 'main.right.form.login.inc.php';
