@@ -1,0 +1,58 @@
+.textoPrincipal{
+    h1, div{text-align: left;}
+    
+}
+
+.main
+{
+    width:90%;
+    margin-left: 5%;
+
+    .bannerMini
+    {
+        display: inherit;
+    }
+    actions{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .linha
+        {
+            margin-bottom: 10px;
+            width:80% !important;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-basis: 1;
+
+            .description
+            {
+                width:70% !important;
+            }
+        }
+    }
+}
+.arte{
+    display: inherit;
+ }
+ 
+ 
+.banner
+{
+    display: none;
+}
+
+.footer
+{
+    .desktop
+    {
+        display: inherit;
+    }
+
+    .mobile, .tablet{
+        display: none;
+    }
+
+}

@@ -16,8 +16,8 @@ class view_default_index
 
   <!doctype html>
   <html lang=“<?=$this->locale?>”>    
-    <?php require 'header.inc.php' ?>
-    <?php require 'body.inc.php' ?>
+    <?php require 'html.header.inc.php' ?>
+    <?php require 'main.inc.php' ?>
   </html>
 
     <?php

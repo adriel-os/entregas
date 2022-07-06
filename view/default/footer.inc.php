@@ -1,3 +1,7 @@
-<div class="row fixed-bottom container-fluid justify-content-center align-items-center  rowBtn">
-      <div class="col-6 text-center">Desenvolvido por AOS & LLJ.</div>
+<div class="row container-fluid justify-content-center align-items-center rowBtn footer border">
+      <div class="col text-center">Desenvolvido por AOS & LLJ.
+            <span class="mobile">Versão Mobile</span>
+            <span class="tablet">Versão Tablet</span>
+            <span class="desktop">Versão Desktop</span>
+      </div>
 </div> 

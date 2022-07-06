@@ -1,0 +1,18 @@
+
+@import 'default.scss';
+
+
+/* Mobile */
+@media (max-width: 768px) {
+    @import 'mobile.scss';
+}
+
+/*tablet */
+@media (min-width: 769px) {
+    @import 'tablet.scss';
+}
+
+/* Desktops */
+@media (min-width: 1200px) {
+    @import 'desktop.scss';
+}

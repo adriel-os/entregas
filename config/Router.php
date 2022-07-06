@@ -79,8 +79,11 @@ class Router
         // se for imagem/ todo? aplicar comportamento header
         if(strpos($result, '/img') > 0)
         {
-            header("Content-Type: image/jpeg");
-            readfile($this->localAbsoluto);
+            $this->localAbsoluto = __DIR__ . '/..'. $result ;
+            $img = imagecreatefromjpeg( $this->localAbsoluto);
+            header('Content-type: image/jpg');  
+            imagejpeg($img, null, 5);
+            imagedestroy($img);
             return true;
         }  
 

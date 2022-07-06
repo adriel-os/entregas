@@ -1,0 +1,36 @@
+.textoPrincipal h1, .textoPrincipal div {
+  text-align: center;
+}
+
+.main .bannerMini {
+  display: none;
+}
+.main actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main actions .linha {
+  margin-bottom: 10px;
+  width: 60% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 1;
+}
+
+.arte {
+  display: none;
+}
+
+.banner {
+  display: inherit;
+}
+
+.footer .tablet {
+  display: inherit;
+}
+.footer .desktop, .footer .mobile {
+  display: none;
+}/*# sourceMappingURL=tablet.css.map */

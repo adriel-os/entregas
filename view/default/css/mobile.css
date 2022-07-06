@@ -1,0 +1,39 @@
+.textoPrincipal h1, .textoPrincipal div {
+  text-align: center;
+}
+
+.main .bannerMini {
+  display: none;
+}
+.main actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main actions .linha {
+  margin-bottom: 10px;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 1;
+}
+.main actions .linha .description {
+  width: 100% !important;
+}
+
+.arte {
+  display: none;
+}
+
+.banner {
+  display: inherit;
+}
+
+.footer .mobile {
+  display: inherit;
+}
+.footer .desktop, .footer .tablet {
+  display: none;
+}/*# sourceMappingURL=mobile.css.map */
