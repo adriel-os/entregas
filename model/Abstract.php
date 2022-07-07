@@ -51,6 +51,8 @@ abstract class Model_Abstract
 		}
 		else
 		{
+			if($attr == 'senha')
+			echo $this->$attr;
 			return $this->$attr;			
 		}
 		
@@ -227,6 +229,7 @@ abstract class Model_Abstract
 			$query->setFetchMode(PDO::FETCH_ASSOC);
 			$result = $query->fetchAll();
             $this->populate($result[0]);
+			$this->get_dados();
 			$this->id = $id;
         }
     }

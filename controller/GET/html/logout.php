@@ -1,13 +1,15 @@
 <?php
 $auth = Auth::getInstance();
+$view = new view_default_index();
 if($auth->isLogged())
 {
     $auth->logout();
-    new view_default_index(['msg'=>'Você fez logoff!']);
+    $view->render(['logout'=>true,  'msg'=>'Você saiu!']);
+ 
 }
 else
 {  
-   new view_default_index(array('msg'=>'Você precisa estar logado para sair!'));
+    $view->render(['logout'=>true, 'msg'=>'Você não está logado!']);
 }
 
-echo 'okok';
+unset($view);

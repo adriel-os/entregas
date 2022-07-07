@@ -17,6 +17,7 @@ class Auth implements Auth_Interface {
             $_SESSION['Auth']['login'] = $adapter->getUser();
 			$_SESSION['Auth']['id'] = $adapter->dados['id'];
 			$_SESSION['Auth']['nome'] = ucwords($adapter->dados['nome']);
+			$_SESSION['Auth']['nome'] = ucwords($adapter->dados['email']);
             return true;
         }
         else
@@ -28,6 +29,11 @@ class Auth implements Auth_Interface {
             return true;
         else
             return false;
+    }
+
+    public function dados()
+    {
+       return $_SESSION['Auth'];
     }
 
     public function logout() {

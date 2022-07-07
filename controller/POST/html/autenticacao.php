@@ -24,17 +24,13 @@ $auth = Auth::getInstance();
         {
         
             $view = new view_default_index();
-            $view->set_msg('Usuário ou senha invalidos!');
-            $view->render();
+            $view->render(['post'=>$_POST, 'login'=>false, 'msg'=>array('Usuário ou senha invalidos!')]);
             unset($view);
         }
     }
     else
     {
-
-            echo 'owdwedokwokk';
             $view = new view_default_index();
-            $view->set_msg('Informe os dados de login');
-            $view->render();
+            $view->render(['vars'=>$_POST, 'login'=>false, 'msg'=>array('Usuário ou senha invalidos!')]);
             unset($view);
     }

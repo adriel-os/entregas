@@ -41,8 +41,7 @@ class Router
     {//dependendo do tipo de retorno, buscar na pasta especifica JSON ou HTML
         //echo $this->contentType;
         if( strpos(strtolower($this->contentType), 'json') > 0 
-            or $this->contentType == 'json' 
-            or strpos(strtolower($this->contentType), 'form'))
+            or $this->contentType == 'json' )
         {
         
             $this->contextContent = 'json';

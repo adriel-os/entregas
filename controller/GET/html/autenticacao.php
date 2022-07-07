@@ -3,10 +3,10 @@ $auth = Auth::getInstance();
 
 if($auth->isLogged())
 {
-    header("location: /usuario");
+   include_once 'usuario.php';
 }
 else
-{  
+{
     $view = new view_default_index();
     $view->render();
     unset($view);
