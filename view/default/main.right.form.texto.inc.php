@@ -12,7 +12,7 @@
     <div class="p-3 linha">
         <?php include_once 'main.right.form.cadastro.inc.php';?>
         <button class="btn btn-primary actionRegister">Cadastre-se.</button>
-        <div class="p-2 description">Atenção, para usar nosso serviço realize seu cadastro. Leia os <a href="#">temos de uso</a> de nossa plataforma.</div>
+        <div class="p-2 description">Atenção, para usar nosso serviço realize seu cadastro. Leia os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">temos de uso</a> de nossa plataforma.</div>
         
     </div>
     <div class="p-3 linha">

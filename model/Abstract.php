@@ -6,12 +6,18 @@ abstract class Model_Abstract
 	public $db;
 	private $metodos;
     private $atributos;
+	private $msg;
+	private $id;
+	private $dados = [];
 
+	//atributos a serem desconsiderados durante operações no banco
+	private $classeAtributos = array('db', 'tabela', 'metodos', 'atributos', 'msg', 'dados', 'classeAtributos');
 	public function __construct() 
 	{
 		$this->db = Db_Connection::factory(config_Database::getConfig());
+		//$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 		$this->metodos = array_values(get_class_methods(get_called_class()));
-        $this->atributos = array_keys(get_class_vars(get_called_class()));
+        $this->atributos =array_diff(array_keys(get_class_vars(get_called_class())), $this->classeAtributos);
     }
 	
 	function __set($attr, $valor)
@@ -33,25 +39,45 @@ abstract class Model_Abstract
 
     function __get($attr)
     {
-        return $this->{$attr};
+	
+		if(!in_array($attr, $this->atributos) and $attr !== 'dados' and $attr != 'msg')
+		return 'undefined'; // se atributo nao estiver na classe então retorna falso
+
+		$metodo = 'get_'.$attr;
+		if(in_array($metodo, $this->metodos))
+		{
+			//echo $metodo;
+			return $this->$metodo();
+		}
+		else
+		{
+			return $this->$attr;			
+		}
+		
     }
 
 	function insert()
     {
         if(isset($this->id))
         {
-            $this->msg[]=  'O ID do Objeto já está definido, não é possível fazer novo insert;';
+            $this->msg[] =  'O ID do Objeto já está definido, não é possível fazer novo insert';
             return false;
         }
-        
+
+        if(is_null($this->atributos))
+		{
+			$this->msg[] =  'Os atributos do Objeto não estão definidos, não é possível fazer novo insert';
+			return false;
+		}
+		
         $campos = '';        
         $valores = ''; 
         foreach($this->atributos as $index => $attr)
         {
-            if(in_array($attr, array('db', 'tabela', 'metodos', 'atributos', 'id')))
-            continue;
+			if($attr== 'id')
+			continue;
 
-            if($campos == '')
+          if($campos == '')
             {
                 $campos = $attr;        
 				if(is_integer($this->$attr))
@@ -72,21 +98,39 @@ abstract class Model_Abstract
 					$valores .= ', '.  $this->$attr;
 				}
 				else
-				{      
+				{   if(is_null($this->$attr) or !isset($this->$attr))
+					$this->$attr = 'null';
+					
+					if(is_array($this->$attr))
+					{
+						// não é pra chegar aqui. Se chegar é erro
+						// echo $attr;
+						// var_dump(json_encode($this->$attr));
+					}
+					
 					$valores .= ", '".  $this->$attr . "'";
 				}
                 
-            } 
+            }
         }
 
         $sql = 'insert into '. $this->tabela . ' ('.$campos.') values ('.$valores.');';
+		// echo $sql;
         $query = $this->db->prepare($sql);
 		
-
-		//echo '</br>'. $sql .'</br>';
 		$result = $query->execute();
+
 		if($result)
-		$this->id = $this->db->lastInsertId();
+		{
+			
+			$this->id = $this->db->lastInsertId();
+			return true;
+		}
+		else
+		{
+			$this->msg[$query->errorInfo()[0]] = $query->errorInfo()[2];
+			return false;
+		}
     }
 
 	function update()
@@ -97,7 +141,7 @@ abstract class Model_Abstract
 
         	foreach($this->atributos as $index => $attr)
         	{
-            if(in_array($attr, array('db', 'tabela', 'metodos', 'atributos', 'id')))
+            if(in_array($attr, $this->classeAtributos))
             continue;
 
             if($valores == '')
@@ -141,7 +185,8 @@ abstract class Model_Abstract
 			}
 			else
 			{
-				$this->msg[] = 'Erro ao realizar updade de ' . $this->tabela . ' id = '. $this->id;
+				$this->msg[$query->errorInfo()[0]] = $query->errorInfo()[2];
+				return false;
 			}
 	}
 
@@ -160,7 +205,8 @@ abstract class Model_Abstract
 			}
 			else
 			{
-				$this->msg[] = 'Erro ao realizar delete de ' . $this->tabela . ' id = '. $this->id;
+				$this->msg[$query->errorInfo()[0]] = $query->errorInfo()[2];
+				return false;
 			}
 		}
 	}
@@ -172,7 +218,12 @@ abstract class Model_Abstract
             $sql = "Select * from {$this->tabela} where id='$id'";
             $query = $this->db->prepare($sql);
 
-            $query->execute();
+            $result = $query->execute();
+			if(!$result)
+			{
+				$this->msg[$query->errorInfo()[0]] = $query->errorInfo()[2];
+				return false;
+			}
 			$query->setFetchMode(PDO::FETCH_ASSOC);
 			$result = $query->fetchAll();
             $this->populate($result[0]);
@@ -182,8 +233,17 @@ abstract class Model_Abstract
 
 	function populate($dataset)
     {
+		if(is_null($dataset))
+		{
+			$this->msg[] =  'Lista de atributos está vazia.';
+			return false;
+		}
+		
         foreach($this->atributos as $pos => $attr)
 		{
+			if(in_array($attr, $this->classeAtributos))
+            continue; // se for atributo de classe então passa
+
             if(!isset($this->$attr))
             {
                 if(isset($dataset[$attr]))
@@ -197,18 +257,38 @@ abstract class Model_Abstract
                     }
                     else
                     $this->$attr=$dataset[$attr];
+
                 }
                 else
                 {
 					if($attr !== 'id')
 					{
                     	// se não encontrar o atributo da classe no ArrayKey do dataset, então apresentar a mensagem.
-                    	$this->msg[] =  '</br>O atributo "'.$attr.'" da Classe "'. get_called_class() .'", não foi encontrado no dataset.</br>';
+                    	$this->msg[] =  'O atributo "'.$attr.'" da Classe "'. get_called_class() .'", não foi encontrado no dataset.';
 					}
                 }
              }
         }
     }
+
+	function get_dados()
+	{
+		$result = [];
+
+		foreach($this->atributos as $pos => $attr)
+		{
+			$metodo = 'get_'.$attr;
+			if(in_array($metodo, $this->metodos))
+			{
+				$this->dados[$attr] = $this->{$metodo}();
+			}
+			else
+				$this->dados[$attr] = $this->$attr;
+		}
+	
+		return $this->dados;
+	}
+
 	############################################################
 	# # FUNÇÕES Para Ajudar Validar tipos em comuns de dados # #
 	############################################################

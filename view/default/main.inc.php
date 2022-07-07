@@ -7,6 +7,7 @@
     ?>
 </div>
 <?php
+include_once 'termos.inc.php';
 include_once 'footer.inc.php';
 ?>
 

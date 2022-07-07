@@ -4,7 +4,6 @@ html, body {
 }
 
 body {
-  color: #005DFF;
   background-color: beige;
 }
 
@@ -28,6 +27,7 @@ button {
   margin-left: 10%;
   margin-top: 30px;
   padding-bottom: 5%;
+  color: #005DFF;
 }
 .main .arte {
   max-height: 650px;
@@ -51,6 +51,9 @@ button {
 }
 .main .mainRight .textoPrincipal h1 {
   font-weight: 600;
+}
+.main .mainRight .textoPrincipal h1, .main .mainRight .textoPrincipal h3 {
+  text-align: center;
 }
 .main .mainRight actions {
   width: 80%;
@@ -99,6 +102,16 @@ button {
 
 .footer {
   margin-top: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.modal-footer button {
+  width: 60px !important;
 }
 
 /* Mobile */

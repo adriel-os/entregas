@@ -31,10 +31,6 @@ class Router
         $this->set_contextContent();
         $this->set_variables();
 
-        // echo '<pre>';
-        //     var_dump($request);
-        // echo '</pre>';
-
         if($this->set_controller())
         {
             $this->require_controller();
@@ -44,8 +40,11 @@ class Router
     function set_contextContent()
     {//dependendo do tipo de retorno, buscar na pasta especifica JSON ou HTML
         //echo $this->contentType;
-        if(strpos(strtolower($this->contentType), 'json') > 0 or $this->contentType == 'json')
+        if( strpos(strtolower($this->contentType), 'json') > 0 
+            or $this->contentType == 'json' 
+            or strpos(strtolower($this->contentType), 'form'))
         {
+        
             $this->contextContent = 'json';
         }
         else
@@ -128,25 +127,30 @@ class Router
     {
     // Pegar as variaveis da queryString
     // transforma em array de valores
-        if(is_null($this->query) or $this->query == '')
+
+        if($this->method == 'GET' and (is_null($this->query) or $this->query == ''))
         {
             return false;
         }
-
-        if(strrpos($this->query, "&") > 0)
+        if($this->method == 'GET')
+        {
+            if(strrpos($this->query, "&") > 0)
             $URI_vars = explode('&', $this->query);
-        else 
+            else 
             $URI_vars[] = $this->query;
 
             $result = array();
             foreach($URI_vars as $pos => $var)
             {
                 $varTemp = explode( '=', $var);
-                $result[$varTemp[0]] =$varTemp[1];
+                $result[$varTemp[0]] = $varTemp[1];
             }
             $URI_vars = $result;
             $this->variables = $URI_vars;
             return true;
+        }
+        else
+        $this->variables = $_REQUEST;
     }
 
     function require_controller()
