@@ -23,7 +23,7 @@ if(isset($vars['login']) and !$vars['login'])
   </div>
 <div class="input-group m-1 submitArea mt-3">
   <button class="btn btn-secondary actionEntrar" type="submit">Entrar</button>
-  <div class="p-2 description">Caso ja esteja cadastrado faça seu logon.</div>
+  <small class="p-2 description">Caso ja esteja cadastrado faça seu logon.</small>
 </div>
 </form>
 <script src="/view/default/js/action.login.js" language="javascript"> </script>

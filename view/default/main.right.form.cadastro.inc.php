@@ -32,7 +32,7 @@ if(isset($this->msg_cadastro) and count($this->msg_cadastro) > 0)
   </div>
   <div class="input-group m-1 submitArea mt-3">
         <button class="btn btn-primary actionRegister">Cadastre-se</button>
-        <div class="p-2 description">Atenção, para usar nosso serviço realize seu cadastro. Leia os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">temos de uso</a> de nossa plataforma.</div>
+        <small class="p-2 description">Atenção, para usar nosso serviço realize seu cadastro. Leia os <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">temos de uso</a> de nossa plataforma.</small>
   </div>    
 </form>
 <script src="/view/default/js/action.register.js" language="javascript"> </script>
